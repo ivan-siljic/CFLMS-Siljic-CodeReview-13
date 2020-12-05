@@ -1,0 +1,87 @@
+{{ form_start(form) }}
+	<div class="row">
+		<div class="col-sm-6">
+         {{ form_label(form.name, 'Name') }}
+         {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': "Enter The Name Of The Event"}}) }}
+    	</div>
+
+	    <div class="col-sm-6">
+	         {{ form_label(form.date, 'Date') }}
+	         {{ form_widget(form.date) }}
+	    </div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-12">
+	         {{ form_label(form.description, 'Description') }}
+	         {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': "Enter Description" }} ) }}
+	    </div>
+	</div>
+
+    <div class="row mt-3">
+	    <div class="col-12">
+	         {{ form_label(form.image, 'Image') }}
+	         {{ form_widget(form.image, {'attr': {'class': 'form-control', 'placeholder': "Enter Image"}}) }}
+	    </div>
+	</div>
+
+	<div class="row mt-3">
+	    <div class="col-sm-6">
+	         {{ form_label(form.email, 'Email adress') }}
+	         {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': "Enter Email"}}) }}
+	    </div>
+
+	    <div class="col-sm-6">
+	         {{ form_label(form.phone_number, 'Phone Number') }}
+	         {{ form_widget(form.phone_number, {'attr': {'class': 'form-control', 'placeholder': "Enter Phone Number"}}) }}
+	    </div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-sm-6">
+	         {{ form_label(form.zip, 'ZIP') }}
+	         {{ form_widget(form.zip, {'attr': {'class': 'form-control', 'placeholder': "Enter ZIP"}}) }}
+	    </div>
+
+	    <div class="col-sm-6">
+	         {{ form_label(form.city, 'City') }}
+	         {{ form_widget(form.city, {'attr': {'class': 'form-control', 'placeholder': "Enter City"}}) }}
+	    </div>
+    </div>
+
+    <div class="row mt-3">
+	    <div class="col-sm-6">
+	         {{ form_label(form.street, 'Street') }}
+	         {{ form_widget(form.street, {'attr': {'class': 'form-control', 'placeholder': "Enter Street"}}) }}
+	    </div>
+
+	    <div class="col-sm-6">
+	         {{ form_label(form.house_number, 'House Number') }}
+	         {{ form_widget(form.house_number, {'attr': {'class': 'form-control', 'placeholder': "Enter House Number"}}) }}
+	    </div>
+    </div>
+
+    <div class="row mt-3">
+	    <div class="col-12">
+	         {{ form_label(form.url, 'URL') }}
+	         {{ form_widget(form.url, {'attr': {'class': 'form-control', 'placeholder': "Enter URL"}}) }}
+	    </div>
+    </div>
+
+    <div class="row mt-3">
+    	<div class="col-sm-6">
+	         {{ form_label(form.capacity, 'Capacity') }}
+	         {{ form_widget(form.capacity, {'attr': {'class': 'form-control', 'placeholder': "Enter Capacity"}}) }}
+	    </div>
+
+	    <div class="col-sm-6">
+	         {{ form_label(form.type, 'Type') }}
+	         {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+	    </div>
+    </div>
+
+   <div class="row mt-4">
+   		<div class="ml-3">
+    	<button class="btn btn-info">{{ button_label|default('Save') }}</button>
+    	</div>
+{{ form_end(form) }}

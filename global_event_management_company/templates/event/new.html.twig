@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Event{% endblock %}
+
+{% block body %}
+    {{ include('navbar.html.twig') }}
+
+   <div class="container">
+        <div class="row">
+            <div class="col-8 m-auto">
+                <div class="card m-5">
+                    <div class="card-header">
+                        <h1>Create New Event.</h1>
+                    </div>
+                    
+                    <div class="p-3">
+                    	{{ include('event/_form.html.twig') }}
+					</div>
+					</div>
+
+                    <div class="card-footer "> 
+                         <a class="text-info" href="{{ path('event_index') }}">back to list...</a>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+ {{ include('footer.html.twig') }}   
+{% endblock %}
