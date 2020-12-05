@@ -17,7 +17,7 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('date', DateTimeType::class, ['input'  => 'datetime'])
+            ->add('date', DateTimeType::class, ['input'  => 'datetime', 'widget' => 'single_text', 'format' => "dd-MM-yyyy 'at' H:mm"])
             ->add('description')
             ->add('image')
             ->add('capacity')
