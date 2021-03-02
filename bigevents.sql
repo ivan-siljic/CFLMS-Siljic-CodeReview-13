@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `cr13_Siljic_bigevents`
+-- Datenbank: `bigevents`
 --
-CREATE DATABASE IF NOT EXISTS `cr13_Siljic_bigevents` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `cr13_Siljic_bigevents`;
+CREATE DATABASE IF NOT EXISTS `bigevents` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bigevents`;
 
 -- --------------------------------------------------------
 
