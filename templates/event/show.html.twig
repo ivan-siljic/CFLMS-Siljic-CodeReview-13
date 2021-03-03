@@ -6,23 +6,38 @@
 
     {{ include('navbar.html.twig') }}
 
-    <div class="container">
         <div class="row">
-            <div class="col-6 mt-3">
-                 <a href="{{ path('event_index') }}">back to list</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 my-3">
+            <div class="col-6 mt-5">
                 <h1>Show</h1>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-10 mb-5">
-                <div class="card h-100 shadow-sm"> 
-                                <div class="card-header text-uppercase bg-dark text-light">
-                                    {{ event.name }}
+
+            <div class="col-12 d-lg-none">
+                {{ include('sidebar.html.twig') }}
+            </div>
+
+            <div class="col-12 col-lg-10">   
+
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <a class="text-secondary text-end" href="{{ path('event_new') }}">Create new</a>
+                    </div>
+                </div>    
+
+                <div class="row">
+                        <div class="col-12">
+                            <div class="card h-100 shadow-sm"> 
+                                <div class="card-header bg-dark">
+                                    <div class="row">
+                                        <div class="col-10 text-uppercase text-light my-auto">
+                                            {{ event.name }}
+                                        </div>
+                                        <div class="col-2 d-flex justify-content-end">
+                                                <a class="btn btn-light" href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                                        </div>
+                                    </div>
                                 </div>
                             
                                     <img class="d-none d-md-block" src="{{ event.image }}">
@@ -48,9 +63,6 @@
                                         </div>
 
                                         <div class="row p-3">  
-                                            <button class="btn btn-info">
-                                                <a class="text-light" href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
-                                            </button>
                                             <div class="col-6">
                                                 {{ include('event/_delete_form.html.twig') }}
                                             </div>
@@ -60,23 +72,22 @@
                                     <div class="card-footer">
                                         <small class="text-muted"><strong>Kontakt:</strong> 
                                         <br>    
-                                        <a href="{{ event.url }}">{{ event.url }}</a>, {{ event.email }}, Tel: {{ event.phoneNumber }}</small>
+                                        <a class="text-secondary" href="{{ event.url }}">{{ event.url }}</a>, {{ event.email }}, Tel: {{ event.phoneNumber }}</small>
                                     </div>
                             </div>
+                        </div>
+                </div>
             </div>
-{{ include('sidebar.html.twig') }}
-            {# <div class="col-2 py-2 bg-white rounded h-50" style="border: 1px solid silver">
-                <h5>Filter by Type:</h5> #}
-                    {# {% for event in events %}
-
-                    <a href="{{ path('filter_result', {'result': event.type}) }}">{{ event.type }}</a>
-                    <br>
-
-                    {% endfor %}    #}
-
-            {# </div> #}
+            <div class="d-none d-lg-block col-lg-2">
+                {{ include('sidebar.html.twig') }}
+            </div>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col-6 my-5">
+                 <a class="text-dark" href="{{ path('event_index') }}">back to list</a>
+            </div>
+        </div>
 
    {{ include('footer.html.twig') }}
 {% endblock %}

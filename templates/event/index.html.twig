@@ -6,102 +6,69 @@
 
     {{ include('navbar.html.twig') }}
 
-    <div class="container">
+    
         <div class="row">
-            <div class="col-6 my-3">
+            <div class="col-6 mt-5">
                 <h1>Events</h1>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-10">                    
-                <div class="row">
-                {% for event in events %}
-                    
-                        <div class="col-6 mb-4">
-                            <div class="card h-100 shadow-sm"> 
-                                <div class="card-header text-uppercase bg-dark text-light">
-                                    {{ event.name }}
-                                </div>
-                            
-                                    <img class="d-none d-md-block" src="{{ event.image }}">
-                                
-                                    <div class="card-body">
-                                        <div class="mt-auto lead"> 
-                                            <h5><mark class="p-1">{{ event.date|date("F jS") }}</mark></h5>
-                                            <div class="my-3">{{ event.date|date("g:ia") }} </div>
-                                        </div>
 
-                                        <button class="btn btn-info my-1"><a class="text-light" href="{{ path('event_show', {'id': event.id}) }}">show</a> </button>
-                                        <button class="btn btn-warning my-1"><a class="text-dark" href="{{ path('event_edit', {'id': event.id}) }}">edit</a> </button>
-                                    </div>
-                                        
-                                    <div class="card-footer">
-                                        <small class="text-muted"><strong>URL:</strong> 
-                                        <br>    
-                                        <a href="{{ event.url }}">{{ event.url }}</a></small>
-                                    </div>
-                            </div>
-                        </div>              
-                    
-
-                {% else %}
-                        <tr>
-                            <td colspan="15">no records found</td>
-                        </tr>
-                {% endfor %}
-</div>
-
-
-                    <button class="btn btn-info my-3">
-                        <a class="text-light" href="{{ path('event_new') }}">Create new</a>
-                    </button>
-
+            <div class="col-12 d-lg-none">
+                {{ include('sidebar.html.twig') }}
             </div>
-            {{ include('sidebar.html.twig') }}
 
+            <div class="col-12 col-lg-10">   
 
-            {# <div class="col-2 py-2 bg-white rounded h-50" style="border: 1px solid silver">
-                <h5>Filter by Type:</h5>
-                {% for event in events %}
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <a class="text-secondary text-end" href="{{ path('event_new') }}">Create new</a>
+                    </div>
+                </div>    
 
-                    <a href="{{ path('filter_result', {'result': event.type}) }}">{{ event.type }}</a>
-                    <br>
+                <div class="row">
+                
+                    {% for event in events %}
+                        
+                            <div class="col-12 col-lg-6 mb-4">
+                                <div class="card h-100 shadow-sm"> 
+                                    <div class="card-header text-uppercase bg-dark text-light">
+                                        {{ event.name }}
+                                    </div>
+                                
+                                        <img class="d-none d-md-block" src="{{ event.image }}">
+                                    
+                                        <div class="card-body">
+                                            <div class="mt-auto lead"> 
+                                                <h5><mark class="p-1">{{ event.date|date("F jS") }}</mark></h5>
+                                                <div class="my-3">{{ event.date|date("g:ia") }} </div>
+                                            </div>
 
-                {% endfor %}   
+                                            <button class="btn btn-secondary my-1"><a class="text-light" href="{{ path('event_show', {'id': event.id}) }}">show</a> </button>
+                                        </div>
+                                            
+                                        <div class="card-footer">
+                                            <small class="text-muted"><strong>URL:</strong> 
+                                            <br>    
+                                            <a href="{{ event.url }}" class="text-dark">{{ event.url }}</a></small>
+                                        </div>
+                                </div>
+                            </div>              
+                        
+                    {% endfor %}
 
-            </div> #}
+                </div>
+                    
+            </div>
+
+            <div class="d-none d-lg-block col-lg-2">
+                     {{ include('sidebar.html.twig') }}
+            </div>
+
+           
 
         </div>
 
-</div>
    {{ include('footer.html.twig') }}
 {% endblock %}
-
-{# <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>actions</th>
-                        </tr>
-                    </thead>
-                    <tbody> #}
-                    {# {% for event in events %} #}
-                        {# <tr>
-                            <td>{{ event.image }}</td>
-                            <td>{{ event.name }}</td>
-                            <td>{{ event.date|date("F jS \\a\\t g:ia") }}
-                            <td>
-                                <button class="btn btn-info my-1"><a class="text-light" href="{{ path('event_show', {'id': event.id}) }}">show</a> </button>
-                                <button class="btn btn-info my-1"><a class="text-light" href="{{ path('event_edit', {'id': event.id}) }}">edit</a> </button>
-                            </td>
-                        </tr> #}
-                   {#  {% else %}
-                        <tr>
-                            <td colspan="15">no records found</td>
-                        </tr> #}
-                    {# {% endfor %} #}
-            {#         </tbody>
-                    </table> #}

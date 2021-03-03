@@ -21,14 +21,14 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="event_index", methods={"GET"})
      */
-    public function index(EventRepository $eventRepository): Response
+    public function fetchEvents(EventRepository $eventRepository): Response
     {
         return $this->render('event/index.html.twig', [
             'events' => $eventRepository->findAll()
         ]);
     }
 
-     public function sidebar(EventRepository $eventRepository): Response
+     public function fetchEventTypes(EventRepository $eventRepository): Response
     {
         $events = $this->getDoctrine()->getRepository( Event::class)->findAll();
 
@@ -41,7 +41,7 @@ class EventController extends AbstractController
     /**
      * @Route("/filter/{result}", name="filter_result", methods={"GET"})
      */
-    public function result($result): Response
+    public function filterEvents($result): Response
     {
         $results = $this->getDoctrine()->getRepository( Event::class)->findByType($result);
         $events = $this->getDoctrine()->getRepository( Event::class)->findAll();
@@ -56,7 +56,7 @@ class EventController extends AbstractController
     /**
      * @Route("/new", name="event_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function createEvent(Request $request): Response
     {
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
@@ -79,7 +79,7 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      */
-    public function show(Event $event): Response
+    public function fetchSingleEvent(Event $event): Response
     {
         $events = $this->getDoctrine()->getRepository( Event::class)->findAll();
 
@@ -92,7 +92,7 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}/edit", name="event_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Event $event): Response
+    public function updateEvent(Request $request, Event $event): Response
     {
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
@@ -112,7 +112,7 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Event $event): Response
+    public function deleteEvent(Request $request, Event $event): Response
     {
         if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

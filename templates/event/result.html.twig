@@ -6,24 +6,34 @@
 
     {{ include('navbar.html.twig') }}
 
-    <div class="container">
+
         <div class="row">
-            <div class="col-6 mt-3">
-                 <a href="{{ path('event_index') }}">back to list</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 my-3">
-                <h1>Results</h1>
+            <div class="col-6 mt-5">
+               {% for result in results %}
+                    <h1>{{ result.type }}</h1>
+                {% endfor %}
             </div>
         </div>
 
         <div class="row">
-            <div class="col-10">                    
-<div class="row">
-                {% for result in results %}
+
+             <div class="col-12 d-lg-none">
+                {{ include('sidebar.html.twig') }}
+            </div>
+
+            <div class="col-12 col-lg-10">   
+
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <a class="text-secondary text-end" href="{{ path('event_new') }}">Create new</a>
+                    </div>
+                </div>    
+
+                <div class="row">
+
+                    {% for result in results %}
                     
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6 mb-4">
                             <div class="card h-100 shadow-sm"> 
                                 <div class="card-header text-uppercase bg-dark text-light">
                                     {{ result.name }}
@@ -37,51 +47,40 @@
                                             <div class="my-3">{{ result.date|date("g:ia") }} </div>
                                         </div>
 
-                                        <button class="btn btn-info my-1"><a class="text-light" href="{{ path('event_show', {'id': result.id}) }}">show</a> </button>
-                                        <button class="btn btn-warning my-1"><a class="text-dark" href="{{ path('event_edit', {'id': result.id}) }}">edit</a> </button>
-                                    
-                                        {# <div>
-                                            <p class="font-italic font-weight-light border-top px-1 py-2 bg-light rounded">{{ event.description }}</p>
-                                        </div> #}
-
+                                        <button class="btn btn-secondary my-1">
+                                            <a class="text-light" href="{{ path('event_show', {'id': result.id}) }}">show</a>
+                                        </button>
                                     </div>
                                         
                                     <div class="card-footer">
-                                        <small class="text-muted"><strong>URL:</strong> 
-                                        <br>    
-                                        <a href="{{ result.url }}">{{ result.url }}</a></small>
+                                        <small class="text-muted">
+                                            <strong>URL:</strong> 
+                                            <br>    
+                                            <a href="{{ result.url }}" class="text-dark">{{ result.url }}</a>
+                                        </small>
                                     </div>
-                                </div>
+                            </div>
                         </div>              
-                    
 
-                {% else %}
-                        <tr>
-                            <td colspan="15">no records found</td>
-                        </tr>
-                {% endfor %}
-</div>
+                    {% endfor %}
 
-
-                    <button class="btn btn-info my-3">
-                        <a class="text-light" href="{{ path('event_new') }}">Create new</a>
-                    </button>
+                </div>
 
             </div>
 
-            <div class="col-2 py-2 bg-white rounded h-50" style="border: 1px solid silver">
-                <h5>Filter by Type:</h5>
-                {% for event in events %}
-
-                    <a href="{{ path('filter_result', {'result': event.type}) }}">{{ event.type }}</a>
-                    <br>
-
-                {% endfor %}   
-
+            <div class="d-none d-lg-block col-lg-2">
+                     {{ include('sidebar.html.twig') }}
             </div>
 
         </div>
 
-</div>
+        <div class="row">
+            <div class="col-6 my-3">
+                 <a class="text-dark" href="{{ path('event_index') }}">back to list</a>
+            </div>
+        </div>
+
+
    {{ include('footer.html.twig') }}
+
 {% endblock %}

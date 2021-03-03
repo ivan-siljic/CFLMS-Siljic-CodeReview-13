@@ -6,32 +6,24 @@
     
     {{ include('navbar.html.twig') }}
     
-    <div class="container">
         <div class="row">
-            <div class="col-8 m-auto">
-                <div class="card m-5">
+            <div class="col-12 col-lg-10">
+                <div class="card my-5">
                     <div class="card-header">
                         <h1>Edit Event.</h1>
                     </div>
                     
 	                 <div class="p-3">  
 	                    	{{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
-	                   
-	                    <div class="col-6">
-	                    	{{ include('event/_delete_form.html.twig') }}
-						</div>
-						
-					</div>
-					</div>
+                    </div>
+				</div>
 
                     <div class="card-footer "> 
-                         <a class="text-info" href="{{ path('event_index') }}">back to list...</a>
+                         <a class="text-dark" href="{{ path('event_index') }}">back to list</a>
                     </div>
-                    
-
-                </div>
             </div>
         </div>
     </div>
+
  {{ include('footer.html.twig') }}
 {% endblock %}
